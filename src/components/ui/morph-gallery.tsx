@@ -305,8 +305,7 @@ export default function MorphGallery({
   }, [active])
 
   // Rebuilding on the source list is the point: new images, new textures.
-  const sources = items.map((i) => i.src).join("
-")
+  const sources = items.map((i) => i.src).join("\n")
 
   React.useEffect(() => {
     const canvas = canvasRef.current
