@@ -26,6 +26,7 @@
   --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
   --color-hairline: var(--hairline);
+  --color-light-line: var(--light-line);
   --color-input: var(--input);
   --color-ring: var(--ring);
   --font-display: var(--font-display);
@@ -35,30 +36,41 @@
 :root {
   --radius: 0rem;
 
-  /* paper / ink / rust editorial palette */
-  --background: oklch(0.958 0.017 87.5);
-  --foreground: oklch(0.203 0.006 67.5);
-  --card: oklch(0.975 0.012 90);
-  --card-foreground: oklch(0.203 0.006 67.5);
-  --popover: oklch(0.975 0.012 90);
-  --popover-foreground: oklch(0.203 0.006 67.5);
-  --primary: oklch(0.489 0.152 30.5);
-  --primary-foreground: oklch(0.975 0.012 90);
-  --secondary: oklch(0.93 0.016 88);
-  --secondary-foreground: oklch(0.203 0.006 67.5);
-  --muted: oklch(0.93 0.016 88);
-  --muted-foreground: oklch(0.52 0.02 70);
-  --accent: oklch(0.489 0.152 30.5);
-  --accent-foreground: oklch(0.975 0.012 90);
-  --destructive: oklch(0.489 0.152 30.5);
-  --destructive-foreground: oklch(0.975 0.012 90);
-  --border: oklch(0.203 0.006 67.5 / 14%);
-  --hairline: oklch(0.203 0.006 67.5 / 20%);
-  --input: oklch(0.203 0.006 67.5 / 20%);
-  --ring: oklch(0.489 0.152 30.5 / 40%);
+  /* forest, lime, and paper: the selected editorial palette */
+  --background: #f3f1e6;
+  --foreground: #071d18;
+  --card: #f3f1e6;
+  --card-foreground: #071d18;
+  --popover: #f3f1e6;
+  --popover-foreground: #071d18;
+  --primary: #d8ef9a;
+  --primary-foreground: #071d18;
+  --secondary: #154e3c;
+  --secondary-foreground: #f3f1e6;
+  --muted: #e4e9d9;
+  --muted-foreground: #52665a;
+  --accent: #d8ef9a;
+  --accent-foreground: #071d18;
+  --destructive: #154e3c;
+  --destructive-foreground: #f3f1e6;
+  --border: #071d1833;
+  --hairline: #071d1833;
+  --light-line: #f3f1e64d;
+  --input: #071d1833;
+  --ring: #d8ef9a;
+  --night: #071d18;
+  --forest: #154e3c;
+  --paper: #f3f1e6;
+  --lime: #d8ef9a;
+  --font-display: "Instrument Serif", Georgia, serif;
+  --font-sans-ui: "Work Sans", system-ui, sans-serif;
+}
 
-  --font-display: "Fraunces", ui-serif, Georgia, serif;
-  --font-sans-ui: "Inter", ui-sans-serif, system-ui, sans-serif;
+@theme inline {
+  --color-night: var(--night);
+  --color-forest: var(--forest);
+  --color-paper: var(--paper);
+  --color-lime: var(--lime);
 }
 
 @layer base {
@@ -72,6 +84,19 @@
     font-family: var(--font-sans-ui);
     -webkit-font-smoothing: antialiased;
   }
+}
+
+.silk-backdrop {
+  position: absolute;
+  inset: 0;
+  background-color: var(--night);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E"), radial-gradient(circle at 47% 55%, transparent 52%, var(--night) 100%), linear-gradient(var(--silk-angle, 90deg), var(--night) 0%, var(--forest) 100%);
+  background-size: 120px 120px, auto, auto;
+  background-blend-mode: overlay, normal, normal;
+}
+
+.reel-mask {
+  background: linear-gradient(to bottom, color-mix(in srgb, var(--night) 45%, transparent), color-mix(in srgb, var(--night) 65%, transparent) 55%, var(--night));
 }
 
 @utility hairline-t {

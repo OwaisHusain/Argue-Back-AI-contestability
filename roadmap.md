@@ -1,0 +1,3 @@
+- [ ] Restyle Home with forest/lime editorial layout and a moving image background.
+- [ ] Add How It Works and About pages with shared navigation.
+- [ ] Verify the demo and all three pages on desktop and mobile.

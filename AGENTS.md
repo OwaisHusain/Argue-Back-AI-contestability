@@ -8,3 +8,6 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep Home's live Decay demo independent of the visual backdrop; the photo reel and silk backdrop are presentational only, so interaction stays reliable.
+- Share the compact site navigation/footer through `site-chrome.tsx` across the three public pages, so their destinations and event credit remain consistent.
