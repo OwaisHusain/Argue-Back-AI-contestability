@@ -121,3 +121,7 @@
     filter: blur(6px);
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .decay-out { animation: none; }
+}

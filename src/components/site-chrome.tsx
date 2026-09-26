@@ -6,8 +6,8 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-5 px-5 py-5 sm:px-8">
         <Link to="/" className="font-display text-2xl leading-none text-foreground" aria-label="Argue Back home">Argue Back<span className="text-primary">.</span></Link>
         <nav aria-label="Main navigation" className="flex gap-5 font-sans text-sm sm:gap-8">
-          <Link to="/how-it-works" className="text-foreground/75 hover:text-primary" activeProps={{ className: "text-primary" }}>How it works</Link>
-          <Link to="/about" className="text-foreground/75 hover:text-primary" activeProps={{ className: "text-primary" }}>About</Link>
+          <Link to="/how-it-works" className="text-foreground/75 hover:underline hover:underline-offset-4" activeProps={{ className: "underline underline-offset-4" }}>How it works</Link>
+          <Link to="/about" className="text-foreground/75 hover:underline hover:underline-offset-4" activeProps={{ className: "underline underline-offset-4" }}>About</Link>
         </nav>
       </div>
     </header>
