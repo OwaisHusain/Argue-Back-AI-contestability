@@ -13,5 +13,5 @@ export const Route = createFileRoute("/about")({
   ] }), component: About,
 });
 function About() {
-  return <div className="min-h-screen bg-deep-blue"><SiteHeader overlay /><main><AboutChapter standalone /></main><SiteFooter /></div>;
+  return <div className="min-h-screen bg-deep-blue [--foreground:var(--paper)]"><SiteHeader overlay /><main><AboutChapter standalone /></main><SiteFooter /></div>;
 }

@@ -14,5 +14,5 @@ export const Route = createFileRoute("/how-it-works")({
 });
 
 function HowItWorks() {
-  return <div className="min-h-screen bg-night"><SiteHeader overlay /><main><HowChapter standalone /><AboutChapter standalone /></main><SiteFooter /></div>;
+  return <div className="min-h-screen bg-night [--foreground:var(--paper)]"><SiteHeader overlay /><main><HowChapter standalone /><AboutChapter standalone /></main><SiteFooter /></div>;
 }
