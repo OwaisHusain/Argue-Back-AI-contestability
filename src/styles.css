@@ -63,6 +63,9 @@
   --paper: #f3f1e6;
   --lime: #d8ef9a;
   --deep-blue: #101d30;
+  --coral: #ff8c6b;
+  --sky: #8fd3e6;
+  --amber: #f3c457;
   --font-display: "Instrument Serif", Georgia, serif;
   --font-sans-ui: "Work Sans", system-ui, sans-serif;
 }
@@ -73,6 +76,9 @@
   --color-paper: var(--paper);
   --color-lime: var(--lime);
   --color-deep-blue: var(--deep-blue);
+  --color-coral: var(--coral);
+  --color-sky: var(--sky);
+  --color-amber: var(--amber);
 }
 
 @layer base {

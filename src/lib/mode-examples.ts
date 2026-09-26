@@ -17,11 +17,13 @@ export const CORE_WORDS = countWords(CORE.map((i) => SENTENCES[i]).join(" "));
 
 export type ModeId = "decay" | "graveyard" | "rebuild" | "guess";
 
-export const MODES: { id: ModeId; name: string; blurb: string; asks: string }[] = [
-  { id: "decay", name: "The Decay", blurb: "Strip away the padding until only the answer remains.", asks: "Which of these sentences actually say something?" },
-  { id: "graveyard", name: "The Graveyard", blurb: "See the other answers that might have been given.", asks: "What did the model consider, and why did it bury it?" },
-  { id: "rebuild", name: "The Rebuild", blurb: "The same point, put differently.", asks: "Does the claim survive being said another way?" },
-  { id: "guess", name: "The Guess, Highlighted", blurb: "Spot where an answer becomes an assumption.", asks: "Where is the model filling gaps you never filled in?" },
+export type ModeAccent = "lime" | "coral" | "sky" | "amber";
+
+export const MODES: { id: ModeId; name: string; blurb: string; asks: string; problem: string; accent: ModeAccent }[] = [
+{ id: "decay", name: "The Decay", blurb: "Strip away the padding until only the answer remains.", asks: "Which of these sentences actually say something?", problem: "Answers bury one real claim under hedges, praise, and restated questions, so you can't tell how much was actually said.", accent: "lime" },
+{ id: "graveyard", name: "The Graveyard", blurb: "See the other answers that might have been given.", asks: "What did the model consider, and why did it bury it?", problem: "You only ever see the winning answer. The alternatives the model weighed, and why they lost, stay invisible.", accent: "coral" },
+{ id: "rebuild", name: "The Rebuild", blurb: "The same point, put differently.", asks: "Does the claim survive being said another way?", problem: "A claim can sound convincing purely because of its phrasing, and you can't test that without rewording it yourself.", accent: "sky" },
+{ id: "guess", name: "The Guess, Highlighted", blurb: "Spot where an answer becomes an assumption.", asks: "Where is the model filling gaps you never filled in?", problem: "Models quietly fill in details you never gave them and present those assumptions with the same confidence as facts.", accent: "amber" },
 ];
 
 export const GRAVEYARD = [

@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Ghost, Highlighter, MousePointerClick, RefreshCw, Repeat2, Scissors, Swords } from "lucide-react";
-import { SilkBackdrop } from "@/components/silk-backdrop";
+import { SilkShader } from "@/components/silk-shader";
 import { ModeExamples } from "@/components/mode-examples";
 import RadialOrbitalTimeline, { type OrbitalItem } from "@/components/ui/radial-orbital-timeline";
 
@@ -20,7 +20,8 @@ const ORBIT: OrbitalItem[] = [
 export function HowChapter() {
   return (
     <section className="relative isolate overflow-hidden text-paper">
-      <SilkBackdrop />
+      <SilkShader className="-z-10" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-night/30 via-night/70 to-night" aria-hidden="true" />
       <div className="relative z-10 mx-auto max-w-6xl px-5 pb-20 pt-36 sm:px-8 sm:pb-28 sm:pt-40">
         <div className="grid gap-8 md:grid-cols-[.85fr_1.15fr] md:gap-20">
           <div>
@@ -62,7 +63,8 @@ export function HowChapter() {
 export function AboutChapter() {
   return (
     <section className="relative isolate overflow-hidden text-paper">
-      <SilkBackdrop />
+      <SilkShader className="-z-10" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-night/20 via-night/60 to-night/90" aria-hidden="true" />
       <div className="relative z-10 mx-auto max-w-6xl px-5 pb-20 pt-36 sm:px-8 sm:pb-28 sm:pt-40">
         <div className="grid gap-10 md:grid-cols-[.85fr_1.15fr] md:gap-20">
           <div>
