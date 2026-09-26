@@ -7,13 +7,14 @@ const steps = [
 ];
 
 export function HowChapter({ standalone = false }: { standalone?: boolean }) {
+  const Heading = standalone ? "h1" : "h2";
   return (
     <section id="how-it-works" className="chapter-how relative isolate overflow-hidden border-t border-light-line text-paper">
       <div className="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-32">
         <div className="grid gap-8 md:grid-cols-[.85fr_1.15fr] md:gap-20">
           <div>
             <p className="font-sans text-sm text-lime">The next question</p>
-            <h2 className="mt-5 font-display text-6xl leading-[.95] sm:text-8xl">How it <em className="text-lime">works.</em></h2>
+            <Heading className="mt-5 font-display text-6xl leading-[.95] sm:text-8xl">How it <em className="text-lime">works.</em></Heading>
           </div>
           <p className="max-w-xl self-end font-display text-2xl leading-snug sm:text-4xl">A challenge, not another prompt. Stay with the answer and ask more of it.</p>
         </div>
@@ -28,7 +29,7 @@ export function HowChapter({ standalone = false }: { standalone?: boolean }) {
         </div>
         <div className="mt-14 grid gap-8 md:grid-cols-[.85fr_1.15fr] md:gap-20">
           <p className="font-sans text-sm text-lime">Inside The Decay</p>
-          <p className="max-w-xl font-sans text-base leading-relaxed text-paper/75">The live example above uses a prepared answer: it strips away the padding, leaving the useful part in view. The extension's model-powered round trip is the intended experience as these modes go live.</p>
+          <p className="max-w-xl font-sans text-base leading-relaxed text-paper/75">The examples on Home use prepared answers to show how each mode behaves. The extension's model-powered round trip is the intended experience as these modes go live.</p>
         </div>
         {standalone && <Link to="/" hash="about" className="mt-14 inline-block border-b border-lime pb-1 font-sans text-lime">Continue to About</Link>}
       </div>
@@ -37,13 +38,14 @@ export function HowChapter({ standalone = false }: { standalone?: boolean }) {
 }
 
 export function AboutChapter({ standalone = false }: { standalone?: boolean }) {
+  const Heading = standalone ? "h1" : "h2";
   return (
     <section id="about" className="chapter-about relative isolate overflow-hidden border-t border-light-line text-paper">
       <div className="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-32">
         <div className="grid gap-10 md:grid-cols-[.85fr_1.15fr] md:gap-20">
           <div>
             <p className="font-sans text-sm text-lime">Why we built it</p>
-            <h2 className="mt-5 font-display text-6xl leading-[.95] sm:text-8xl">About <em className="text-lime">us.</em></h2>
+            <Heading className="mt-5 font-display text-6xl leading-[.95] sm:text-8xl">About <em className="text-lime">us.</em></Heading>
           </div>
           <div className="self-end">
             <p className="font-display text-3xl leading-tight sm:text-5xl">The missing button is <em className="text-lime">disagree.</em></p>
