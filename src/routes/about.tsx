@@ -12,6 +12,15 @@ export const Route = createFileRoute("/about")({
     { name: "twitter:card", content: "summary_large_image" },
   ] }), component: About,
 });
+
 function About() {
-  return <div className="min-h-screen bg-deep-blue [--foreground:var(--paper)]"><SiteHeader overlay /><main><AboutChapter standalone /></main><SiteFooter /></div>;
+  return (
+    <div className="min-h-screen bg-night text-paper [--foreground:var(--paper)]">
+      <div className="relative isolate">
+        <div className="absolute inset-x-0 top-0 z-20"><SiteHeader overlay /></div>
+        <main><AboutChapter /></main>
+      </div>
+      <div className="[--foreground:#071d18]"><SiteFooter /></div>
+    </div>
+  );
 }

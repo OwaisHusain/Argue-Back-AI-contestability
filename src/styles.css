@@ -103,12 +103,6 @@
 
 html { scroll-behavior: smooth; }
 
-.chapter-how {
-  background: linear-gradient(150deg, var(--forest) 0%, #123e3e 38%, #142b3b 75%, var(--deep-blue) 100%);
-}
-.chapter-about {
-  background: linear-gradient(155deg, var(--deep-blue) 0%, #142d3d 54%, #113039 100%);
-}
 .decay-sentence {
   display: grid;
   grid-template-rows: 1fr;

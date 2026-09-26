@@ -1,9 +1,11 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { ChevronDown, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SiteFooter, SiteHeader } from "@/components/site-chrome";
-import { AboutChapter, HowChapter } from "@/components/site-chapters";
+import { LiquidButton } from "@/components/ui/liquid-glass-button";
+import { GuessText } from "@/components/mode-examples";
+import { CORE, FULL_WORDS, GRAVEYARD, GRAVEYARD_SURVIVOR, MODES, QUESTION, REBUILDS, SENTENCES, countWords } from "@/lib/mode-examples";
 import { SilkBackdrop } from "@/components/silk-backdrop";
 import MorphGallery from "@/components/ui/morph-gallery";
 import reel1 from "@/assets/argue-reel-1.jpg";
@@ -22,24 +24,6 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const QUESTION = "Should I take an umbrella today?";
-const SENTENCES = [
-  "That's a good question, and there are a few things you might want to consider before heading out.",
-  "Weather can change quickly, so it is often helpful to think about your plans for the day.",
-  "If rain is forecast, take an umbrella.",
-  "Of course, everyone's preferences are different, and some people don't mind getting a little wet.",
-  "If the forecast is clear, leave it at home.",
-  "Ultimately, the best choice depends on what feels right for you and your situation.",
-];
-const CORE = [2, 4];
-const MODES = [
-  { name: "The Decay", blurb: "Strip away the padding until only the answer remains." },
-  { name: "The Graveyard", blurb: "See the other answers that might have been given." },
-  { name: "The Rebuild", blurb: "The same point, put differently." },
-  { name: "The Guess, Highlighted", blurb: "Spot where an answer becomes an assumption." },
-];
-const countWords = (text: string) => text.trim().split(/\s+/).filter(Boolean).length;
-const FULL_WORDS = countWords(SENTENCES.join(" "));
 const REEL = [
   { src: reel1, alt: "Magnifying glass on a paper answer" },
   { src: reel2, alt: "Lime paper question mark on a dark green desk" },
@@ -128,14 +112,14 @@ function Index() {
                 <h2 className="mt-2 font-display text-xl leading-snug text-paper sm:text-2xl">{QUESTION}</h2>
               </div>
               <div className="px-5 py-6 sm:px-8 sm:py-8">
-                 <div className="min-h-[12rem] font-display text-xl leading-[1.4] text-paper sm:min-h-[10rem] sm:text-2xl" aria-live="polite">
-                   {mode === "The Graveyard" ? <div className="space-y-4"><p className="text-lime">Other answers considered</p><p className="border-l border-light-line pl-4 text-paper/65">“Always take one, just in case.”</p><p className="border-l border-light-line pl-4 text-paper/65">“No, you probably won't need it.”</p><p className="border-l border-lime pl-4">A better answer depends on the forecast, not a blanket rule.</p></div> : mode === "The Rebuild" ? <p>{rebuildVersion % 2 ? "Check the forecast before you go: rain means bring an umbrella; clear skies mean you can leave it behind." : "An umbrella is useful if rain is expected. Otherwise, you can skip it."}</p> : mode === "The Guess, Highlighted" ? <p>Without a location or forecast, <mark className="bg-lime text-night">assuming it will rain is a guess</mark>. Check today's forecast first; bring an umbrella if rain is likely.</p> : <div className="space-y-1">{SENTENCES.map((sentence, i) => !removed.includes(i) && <div key={i} className={`decay-sentence ${fading === i ? "decay-sentence-exit" : ""}`}><span>{sentence}</span></div>)}</div>}
+                 <div className="min-h-[14rem] font-display text-lg leading-[1.45] text-paper sm:min-h-[12rem] sm:text-xl" aria-live="polite">
+                   {mode === "The Graveyard" ? <div className="space-y-4"><p className="text-lime">Other answers considered</p>{GRAVEYARD.map((item) => <p key={item.answer} className="border-l border-light-line pl-4 text-paper/65">{`“${item.answer}”`}</p>)}<p className="border-l border-lime pl-4">{GRAVEYARD_SURVIVOR}</p></div> : mode === "The Rebuild" ? <p>{REBUILDS[rebuildVersion % REBUILDS.length]?.text}</p> : mode === "The Guess, Highlighted" ? <GuessText compact /> : <div className="space-y-1">{SENTENCES.map((sentence, i) => !removed.includes(i) && <div key={i} className={`decay-sentence ${fading === i ? "decay-sentence-exit" : ""}`}><span>{sentence}</span></div>)}</div>}
                  </div>
                 <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3 border-t border-light-line pt-5">
                   <div className="relative" ref={menuRef}>
-                    <Button type="button" onClick={() => setOpen((v) => !v)} aria-expanded={open} aria-haspopup="menu" className="h-10 rounded-none bg-lime px-5 text-night shadow-none hover:bg-lime/85">
+                    <LiquidButton type="button" size="lg" onClick={() => setOpen((v) => !v)} aria-expanded={open} aria-haspopup="menu" className="dark bg-lime/10 font-sans text-base text-lime">
                       Argue back <ChevronDown aria-hidden="true" />
-                    </Button>
+                    </LiquidButton>
                     {open && <div role="menu" aria-label="Ways to argue back" className="absolute left-0 top-full z-30 mt-1 w-[min(19rem,calc(100vw-3rem))] border border-light-line bg-night text-paper">
                        {MODES.map((item) => <Button key={item.name} type="button" role="menuitem" variant="ghost" onClick={() => selectMode(item.name)} className="h-auto w-full justify-start rounded-none border-b border-light-line px-4 py-3 text-left whitespace-normal last:border-b-0 hover:bg-forest hover:text-paper">
                          <span className="block w-full"><span className="font-display text-lg">{item.name}</span><span className="mt-1 block font-sans text-xs font-normal leading-snug text-paper/70">{item.blurb}</span></span>
@@ -162,12 +146,10 @@ function Index() {
             <div className="flex flex-col justify-between gap-5 border-b border-hairline pb-8 sm:flex-row sm:items-end"><p className="font-sans text-sm text-muted-foreground">Four ways to question an answer</p><h2 className="font-display text-4xl sm:text-6xl">The modes</h2></div>
              <div>{MODES.map((mode) => <div key={mode.name} className="grid gap-3 border-b border-hairline py-7 md:grid-cols-[1fr_1fr] md:gap-12">
                <div className="flex items-baseline gap-4"><h3 className="font-display text-3xl sm:text-4xl">{mode.name}</h3></div>
-              <p className="max-w-md font-sans text-sm leading-relaxed sm:text-base">{mode.blurb}</p>
+              <div className="flex flex-col items-start gap-3"><p className="max-w-md font-sans text-sm leading-relaxed sm:text-base">{mode.blurb}</p><Link to="/how-it-works" hash={`example-${mode.id}`} className="border-b border-forest pb-0.5 font-sans text-sm text-forest">See the example</Link></div>
             </div>)}</div>
           </div>
         </section>
-         <HowChapter />
-         <AboutChapter />
       </main>
       <SiteFooter />
     </div>

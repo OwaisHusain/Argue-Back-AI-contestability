@@ -11,4 +11,5 @@
 
 - Keep Home's live Decay demo independent of the visual backdrop; the photo reel and silk backdrop are presentational only, so interaction stays reliable.
 - Share the compact site navigation/footer through `site-chrome.tsx` across the three public pages, so their destinations and event credit remain consistent.
-- Render the How It Works and About chapters from shared site-chapters on Home and their direct URLs, so the scrolling journey and shareable pages stay consistent.
+- Home, How It Works, and About are separate linked pages (no single scrolling journey); How It Works and About render from `site-chapters.tsx`.
+- Mode example content (the monolith vs microservices question) lives in `src/lib/mode-examples.ts` and is shared by the Home demo and the How It Works examples, so they never drift apart.
