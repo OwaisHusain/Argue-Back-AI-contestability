@@ -1,5 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
+import { MorphGallery } from "@/components/ui/morph-gallery";
+import morph1 from "@/assets/morph-1.jpg";
+import morph2 from "@/assets/morph-2.jpg";
+import morph3 from "@/assets/morph-3.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -205,6 +209,20 @@ function Index() {
               )}
             </div>
           </div>
+        </section>
+
+        {/* Evidence reel — constantly morphing */}
+        <section className="pt-16">
+          <MorphGallery
+            items={[
+              { src: morph1, alt: "Interrogation table under a single lamp" },
+              { src: morph2, alt: "Typed page with red strike-throughs" },
+              { src: morph3, alt: "Torn newspaper fragments on a desk" },
+            ]}
+            height="420px"
+            autoplay={3500}
+            loop
+          />
         </section>
 
         {/* Problem */}
