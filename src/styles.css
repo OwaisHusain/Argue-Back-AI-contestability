@@ -62,6 +62,7 @@
   --forest: #154e3c;
   --paper: #f3f1e6;
   --lime: #d8ef9a;
+  --deep-blue: #101d30;
   --font-display: "Instrument Serif", Georgia, serif;
   --font-sans-ui: "Work Sans", system-ui, sans-serif;
 }
@@ -71,6 +72,7 @@
   --color-forest: var(--forest);
   --color-paper: var(--paper);
   --color-lime: var(--lime);
+  --color-deep-blue: var(--deep-blue);
 }
 
 @layer base {
@@ -99,6 +101,24 @@
   background: linear-gradient(to bottom, color-mix(in srgb, var(--night) 45%, transparent), color-mix(in srgb, var(--night) 65%, transparent) 55%, var(--night));
 }
 
+html { scroll-behavior: smooth; }
+
+.chapter-how {
+  background: linear-gradient(150deg, var(--forest) 0%, #123e3e 38%, #142b3b 75%, var(--deep-blue) 100%);
+}
+.chapter-about {
+  background: linear-gradient(155deg, var(--deep-blue) 0%, #142d3d 54%, #113039 100%);
+}
+.decay-sentence {
+  display: grid;
+  grid-template-rows: 1fr;
+  opacity: 1;
+  filter: blur(0);
+  transition: grid-template-rows 840ms cubic-bezier(.22, 1, .36, 1), opacity 700ms ease, filter 840ms ease;
+}
+.decay-sentence > span { min-height: 0; overflow: hidden; }
+.decay-sentence-exit { grid-template-rows: 0fr; opacity: 0; filter: blur(5px); }
+
 @utility hairline-t {
   border-top: 1px solid var(--hairline);
 }
@@ -124,4 +144,6 @@
 
 @media (prefers-reduced-motion: reduce) {
   .decay-out { animation: none; }
+  html { scroll-behavior: auto; }
+  .decay-sentence { transition: none; }
 }
