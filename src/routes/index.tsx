@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { MorphGallery } from "@/components/ui/morph-gallery";
+import MorphGallery from "@/components/ui/morph-gallery";
 import morph1 from "@/assets/morph-1.jpg";
 import morph2 from "@/assets/morph-2.jpg";
 import morph3 from "@/assets/morph-3.jpg";
