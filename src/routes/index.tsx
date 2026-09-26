@@ -150,14 +150,14 @@ function Index() {
           </div>
         </section>
 
-        <section className="border-b border-hairline bg-background py-20 sm:py-28">
+         <section className="border-b border-hairline bg-background py-20 sm:py-28">
           <div className="mx-auto grid max-w-6xl gap-8 px-5 sm:px-8 md:grid-cols-[.7fr_1.3fr] md:gap-20">
             <p className="font-sans text-sm text-muted-foreground">The problem</p>
             <div><h2 className="max-w-3xl font-display text-4xl leading-[1.02] sm:text-6xl">You can’t currently disagree with an AI. You can only ask again.</h2>
             <p className="mt-8 max-w-xl font-sans text-base leading-relaxed text-muted-foreground">Every chat interface is built around agreement: you ask, it answers, you accept. Contesting the reasoning means retyping the question and hoping. Argue Back makes that challenge a control in the interface.</p></div>
           </div>
         </section>
-        <section className="bg-background py-20 sm:py-28">
+         <section className="bg-background py-20 sm:py-28">
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <div className="flex flex-col justify-between gap-5 border-b border-hairline pb-8 sm:flex-row sm:items-end"><p className="font-sans text-sm text-muted-foreground">Four ways to question an answer</p><h2 className="font-display text-4xl sm:text-6xl">The modes</h2></div>
              <div>{MODES.map((mode) => <div key={mode.name} className="grid gap-3 border-b border-hairline py-7 md:grid-cols-[1fr_1fr] md:gap-12">
